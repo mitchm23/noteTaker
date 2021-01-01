@@ -68,7 +68,6 @@ const handleNoteDelete = function (event) {
   event.stopPropagation();
 
   const note = $(this).parent(".list-group-item").data();
-
   if (activeNote.id === note.id) {
     activeNote = {};
   }
@@ -136,7 +135,6 @@ const renderNoteList = (notes) => {
 };
 
 // Gets notes from the db and renders them to the sidebar
-//test
 const getAndRenderNotes = () => {
   return getNotes().then(renderNoteList);
 };

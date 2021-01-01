@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-var data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
 module.exports = function(app) {
     app.get("/api/notes", function(req, res) {
@@ -15,9 +15,7 @@ module.exports = function(app) {
     app.post("/api/notes", function(req, res) {
 
         let newNote = req.body;
-        console.log(newNote);
         let id = data.length.toString();
-        console.log(id);
         newNote.id = id
         data.push(newNote);
         
@@ -31,7 +29,8 @@ module.exports = function(app) {
 
     
     app.delete("/api/notes/:id", function(req, res) {
-        console.log("This note has been deleted");
+        console.log(req.params.id)
+        res.send("This note has been deleted");
     }); 
 
 
